@@ -2,6 +2,26 @@
 
 Use Anaconda with a project-specific environment.
 
+## Repository
+
+The project uses Git and the `main` branch.
+
+Remote:
+
+```text
+git@github.com:Nikduke/Case_Creator_App.git
+```
+
+Typical workflow:
+
+```powershell
+git pull --ff-only
+git status
+git add <files>
+git commit -m "Describe the change"
+git push
+```
+
 ## Environment
 
 Recommended environment name:

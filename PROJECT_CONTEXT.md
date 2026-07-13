@@ -4,7 +4,9 @@
 
 This is the clean active working snapshot for `Case_Creator_App`.
 
-The project does not use Git. Treat this folder as the project root.
+The project uses Git on the `main` branch. Treat this folder as the project root.
+
+The configured remote is `git@github.com:Nikduke/Case_Creator_App.git`.
 
 ## Purpose
 

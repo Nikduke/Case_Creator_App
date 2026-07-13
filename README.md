@@ -2,7 +2,13 @@
 
 Current clean working snapshot for the PSCAD case-creation desktop app.
 
-This folder is intended to be opened directly as the active project root in Codex, VS Code, or another editor. The project does not use Git.
+This folder is intended to be opened directly as the active project root in Codex, VS Code, or another editor. The project is tracked in Git.
+
+GitHub repository:
+
+```text
+git@github.com:Nikduke/Case_Creator_App.git
+```
 
 ## What It Does
 

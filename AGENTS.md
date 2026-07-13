@@ -10,7 +10,7 @@ These instructions apply to the `Case_Creator_App` project root and its contents
 - Project definitions use `.casebuilder.json` files.
 - Excel output is produced from `src/case_builder_app/assets/export_template.xlsx`.
 - PSCAD itself is not launched or configured by this app.
-- This project does not use Git. Do not assume Git history exists.
+- This project uses Git on the `main` branch. Keep commits focused and do not rewrite shared history.
 
 ## Working Rules
 

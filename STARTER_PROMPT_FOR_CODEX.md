@@ -5,7 +5,7 @@ Paste this into Codex on the new laptop:
 ```text
 You are working in this folder as the active project root for Case_Creator_App.
 
-This project does not use Git.
+This project uses Git on the `main` branch. Do not rewrite shared history.
 
 First read README.md, SETUP.md, PROJECT_CONTEXT.md, docs/APP_FUNCTIONAL_SPEC.md, and docs/PROJECT_JSON_GUIDE.md.
 
