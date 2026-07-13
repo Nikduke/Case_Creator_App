@@ -14,7 +14,7 @@ These instructions apply to the `Case_Creator_App` project root and its contents
 
 ## Working Rules
 
-- Work silently by default. Report only completion, blockers, required approval, or validation results.
+- Silent operation is required: do not send progress updates, implementation plans, tool narration, or intermediate status messages to the chat. Respond only when the task is finished, blocked, requires approval or clarification, or needs a final validation report.
 - Inspect the relevant code and documentation before editing.
 - Preserve existing behavior unless the user explicitly requests a behavior change.
 - Prefer deletion and small local simplifications over new abstractions or broad rewrites.
