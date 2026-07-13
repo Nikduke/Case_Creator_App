@@ -1,0 +1,1418 @@
+{
+  "name": "For Test Project JSON",
+  "settings": {
+    "res_flux_enabled": true
+  },
+  "case_parts": [
+    {
+      "id": "633706888af54eb28e27bb150f196122",
+      "label": "Circuit",
+      "values": [
+        {
+          "id": "4faf546e1d7f45a19ffca7236cf5b0eb",
+          "token": "C71",
+          "changes": {
+            "use_cb": true,
+            "use_parameters": true,
+            "use_fault_level": false,
+            "use_layers": true,
+            "use_flux": false,
+            "cb": {
+              "off": [
+                "CB_161_FIC",
+                "CB_161_ONS2",
+                "CB_161_ONS3",
+                "CB_161_ONT1",
+                "CB_161_ONT2",
+                "CB_161_ONT3",
+                "CB_161_TIE1",
+                "CB_161_TPC1",
+                "CB_161_TPC2",
+                "CB_161_TPC3",
+                "CB_230_HF1",
+                "CB_230_HF2",
+                "CB_230_HF3",
+                "CB_230_OFT1",
+                "CB_230_OFT2",
+                "CB_230_OFT3",
+                "CB_230_ONC1",
+                "CB_230_ONC2",
+                "CB_230_ONC3",
+                "CB_230_ONT1",
+                "CB_230_ONT2",
+                "CB_230_ONT3",
+                "CB_230_VSR1",
+                "CB_230_VSR2",
+                "CB_230_VSR3",
+                "CB_66_OFT1",
+                "CB_66_OFT2",
+                "CB_66_OFT3",
+                "CB_66_S2B1",
+                "CB_66_S2B2",
+                "CB_66_S2B3",
+                "CB_66_S2B4",
+                "CB_66_S3A1",
+                "CB_66_S3A2",
+                "CB_66_S3A3",
+                "CB_66_S3A4",
+                "CB_66_S3B1",
+                "CB_66_S3B2",
+                "CB_66_S3B3",
+                "CB_66_S3B4"
+              ],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [
+              {
+                "definition": "Main",
+                "parameter": "AC_Vgridpu",
+                "value": "1"
+              },
+              {
+                "definition": "OnSS_VSR1",
+                "parameter": "I_VSR",
+                "value": "0.264613"
+              },
+              {
+                "definition": "OnSS_VSR2",
+                "parameter": "I_VSR",
+                "value": "0.6562"
+              },
+              {
+                "definition": "OnSS_VSR3",
+                "parameter": "I_VSR",
+                "value": "0.6562"
+              }
+            ],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [
+              {
+                "section": "Sweep_Components",
+                "layer_type": "Main",
+                "target": "FS_OSSHV1",
+                "state": "Enable"
+              },
+              {
+                "section": "Sweep_Components",
+                "layer_type": "Main",
+                "target": "FS_OSSLV1",
+                "state": "Disable"
+              }
+            ],
+            "flux": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "bcdc88cf686a49209fe954018d828f9c",
+      "label": "Strength",
+      "values": [
+        {
+          "id": "351b8eb208604f84be99ff68b89d16ad",
+          "token": "S1",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": true,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "0.0603",
+              "xpos": "2.4753",
+              "rzero": "0.0785",
+              "xzero": "2.4047"
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "c689d6037ba243dba22b87fe67e27409",
+          "token": "S2",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": true,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "0.0655",
+              "xpos": "2.3675",
+              "rzero": "0.0828",
+              "xzero": "2.6202"
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "4595b3a5ae5141ac98790ce9280492de",
+          "token": "S3",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": true,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "0.0536",
+              "xpos": "2.3206",
+              "rzero": "0.0756",
+              "xzero": "3.0061"
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "a259b2756d65484c8b8a96a8a0a2a7a7",
+          "token": "S4",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": true,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "0.0518",
+              "xpos": "2.1791",
+              "rzero": "0.0634",
+              "xzero": "2.1789"
+            },
+            "layers": [],
+            "flux": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "2f811489374348a5a81905fec293adb1",
+      "label": "VSR",
+      "values": [
+        {
+          "id": "0d4f0cade7df42bba4f8fa99810d21c2",
+          "token": "V1",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "be13212527fd4aa3a500b937e83d3619",
+          "token": "V2",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "72ac13cf728544a99727747ceadad9ec",
+          "token": "V3",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "05b687dc572a4127a639d8c18a87426f",
+      "label": "Scenario",
+      "values": [
+        {
+          "id": "d9aaf075e5f74c2fadcfb8d47134e399",
+          "token": "H1_F",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "1ebcde1d84bb4e209f94db30e25d15c1",
+          "token": "H1_L",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "58be63efd7da4d0e8edb1007a6acbd43",
+          "token": "H2_L",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "0eccddddaec14ca5a72b75b14212b8d9",
+          "token": "H3_L",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "138841b6df8e472fbe3c6d7a1bc8424a",
+          "token": "H1_M",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        },
+        {
+          "id": "48200e087f1d4693829d5096ad2fb4a3",
+          "token": "H2_M",
+          "changes": {
+            "use_cb": false,
+            "use_parameters": false,
+            "use_fault_level": false,
+            "use_layers": false,
+            "use_flux": false,
+            "cb": {
+              "off": [],
+              "switch": [],
+              "on": []
+            },
+            "parameters": [],
+            "fault_level": {
+              "rpos": "",
+              "xpos": "",
+              "rzero": "",
+              "xzero": ""
+            },
+            "layers": [],
+            "flux": []
+          }
+        }
+      ]
+    }
+  ],
+  "conditional_rules": [
+    {
+      "id": "ee203546eca0408eb4ec0f6e708e41b2",
+      "name": "constants_on",
+      "match_mode": "ALL",
+      "priority": 10,
+      "clauses": [
+        {
+          "case_part_id": "633706888af54eb28e27bb150f196122",
+          "value_id": "4faf546e1d7f45a19ffca7236cf5b0eb"
+        }
+      ],
+      "changes": {
+        "use_cb": true,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": [
+            "CB_161_ONT1",
+            "CB_161_TPC1",
+            "CB_230_ONC1",
+            "CB_230_ONT1",
+            "CB_230_VSR1"
+          ]
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "843a9690a636416ba91fff7fed9f7863",
+      "name": "scenario_h1_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "1ebcde1d84bb4e209f94db30e25d15c1"
+        }
+      ],
+      "changes": {
+        "use_cb": true,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": [
+            "CB_161_ONS2",
+            "CB_161_ONS3",
+            "CB_161_ONT2",
+            "CB_161_ONT3",
+            "CB_161_TPC2",
+            "CB_161_TPC3",
+            "CB_230_OFT2",
+            "CB_230_OFT3",
+            "CB_230_ONC2",
+            "CB_230_ONC3",
+            "CB_230_ONT2",
+            "CB_230_ONT3",
+            "CB_230_VSR2",
+            "CB_230_VSR3",
+            "CB_66_OFT2",
+            "CB_66_OFT3",
+            "CB_66_S3A1",
+            "CB_66_S3A2",
+            "CB_66_S3A3",
+            "CB_66_S3A4",
+            "CB_66_S3B1",
+            "CB_66_S3B2",
+            "CB_66_S3B3",
+            "CB_66_S3B4"
+          ]
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "da9486194a6144868ae033247cb2f9ad",
+      "name": "scenario_h2_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "58be63efd7da4d0e8edb1007a6acbd43"
+        }
+      ],
+      "changes": {
+        "use_cb": true,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": [
+            "CB_161_ONS2",
+            "CB_161_ONS3",
+            "CB_161_ONT2",
+            "CB_161_ONT3",
+            "CB_161_TPC2",
+            "CB_161_TPC3",
+            "CB_230_OFT2",
+            "CB_230_OFT3",
+            "CB_230_ONC2",
+            "CB_230_ONC3",
+            "CB_230_ONT2",
+            "CB_230_ONT3",
+            "CB_230_VSR2",
+            "CB_230_VSR3",
+            "CB_66_OFT2",
+            "CB_66_OFT3",
+            "CB_66_S3A1",
+            "CB_66_S3A2",
+            "CB_66_S3A3",
+            "CB_66_S3A4",
+            "CB_66_S3B1",
+            "CB_66_S3B2",
+            "CB_66_S3B3",
+            "CB_66_S3B4",
+            "CB_230_HF2",
+            "CB_230_HF3"
+          ]
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "e79e2fb42d6841d2a48747bb6fa0afd4",
+      "name": "scenario_h3_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "0eccddddaec14ca5a72b75b14212b8d9"
+        }
+      ],
+      "changes": {
+        "use_cb": true,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": [
+            "CB_161_ONS2",
+            "CB_161_ONS3",
+            "CB_161_ONT2",
+            "CB_161_ONT3",
+            "CB_161_TPC2",
+            "CB_161_TPC3",
+            "CB_230_OFT2",
+            "CB_230_OFT3",
+            "CB_230_ONC2",
+            "CB_230_ONC3",
+            "CB_230_ONT2",
+            "CB_230_ONT3",
+            "CB_230_VSR2",
+            "CB_230_VSR3",
+            "CB_66_OFT2",
+            "CB_66_OFT3",
+            "CB_66_S3A1",
+            "CB_66_S3A2",
+            "CB_66_S3A3",
+            "CB_66_S3A4",
+            "CB_66_S3B1",
+            "CB_66_S3B2",
+            "CB_66_S3B3",
+            "CB_66_S3B4",
+            "CB_230_HF2"
+          ]
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "b66e43cb31674cd8a9948960d7a5e604",
+      "name": "scenario_h1_m",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "138841b6df8e472fbe3c6d7a1bc8424a"
+        }
+      ],
+      "changes": {
+        "use_cb": true,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": [
+            "CB_161_ONS2",
+            "CB_161_ONT2",
+            "CB_161_TPC2",
+            "CB_230_OFT2",
+            "CB_230_ONC2",
+            "CB_230_ONT2",
+            "CB_230_VSR2",
+            "CB_66_OFT2",
+            "CB_66_S3A1",
+            "CB_66_S3A2",
+            "CB_66_S3A3",
+            "CB_66_S3A4"
+          ]
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "74871e971d9a489984400301914170b3",
+      "name": "scenario_h2_m",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "48200e087f1d4693829d5096ad2fb4a3"
+        }
+      ],
+      "changes": {
+        "use_cb": true,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": [
+            "CB_161_ONS2",
+            "CB_161_ONT2",
+            "CB_161_TPC2",
+            "CB_230_OFT2",
+            "CB_230_ONC2",
+            "CB_230_ONT2",
+            "CB_230_VSR2",
+            "CB_66_OFT2",
+            "CB_66_S3A1",
+            "CB_66_S3A2",
+            "CB_66_S3A3",
+            "CB_66_S3A4",
+            "CB_230_HF2"
+          ]
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "8255af9a406f44e4882e9a9515a2ca43",
+      "name": "vsr_v2",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "be13212527fd4aa3a500b937e83d3619"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": true,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [
+          {
+            "definition": "OnSS_VSR1",
+            "parameter": "I_VSR",
+            "value": "0.393114"
+          }
+        ],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "34539feaabe44b26b796b65f437c2a35",
+      "name": "vsr_v3",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "72ac13cf728544a99727747ceadad9ec"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": true,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": false,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [
+          {
+            "definition": "OnSS_VSR1",
+            "parameter": "I_VSR",
+            "value": "0.6562"
+          }
+        ],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": []
+      }
+    },
+    {
+      "id": "116122a2e1744702aab67a333efbf47b",
+      "name": "flux_s1_default",
+      "match_mode": "ALL",
+      "priority": 10,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0.8,-0.4,-0.4"
+          },
+          {
+            "layer": "Main",
+            "transformer": "OSSTX2",
+            "value": "0.8,-0.4,-0.4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3a7a6c223b7d43378ad8cb9f2e95d960",
+      "name": "flux_s1_v1_h2_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "0d4f0cade7df42bba4f8fa99810d21c2"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "58be63efd7da4d0e8edb1007a6acbd43"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0.8,0.0,-0.8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "210957b0fefb4316849c883920184dbf",
+      "name": "flux_s1_v1_h3_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "0d4f0cade7df42bba4f8fa99810d21c2"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "0eccddddaec14ca5a72b75b14212b8d9"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0.8,0.0,-0.8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "9e66fcf493274a12ba6652502543c1a5",
+      "name": "flux_s1_v1_h1_m",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "0d4f0cade7df42bba4f8fa99810d21c2"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "138841b6df8e472fbe3c6d7a1bc8424a"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0.8,0.0,-0.8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "608279c9595c4312a83a661bf48ac23f",
+      "name": "flux_s1_v1_h2_m",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "0d4f0cade7df42bba4f8fa99810d21c2"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "48200e087f1d4693829d5096ad2fb4a3"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0.8,0.0,-0.8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8ad11d9a2ff744f5b62cfcaef11e3c49",
+      "name": "flux_s1_v2_h1_f",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "be13212527fd4aa3a500b937e83d3619"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "d9aaf075e5f74c2fadcfb8d47134e399"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0,0,0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "4449d1dd98c24ed1829b1cfe673796c4",
+      "name": "flux_s1_v2_h1_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "be13212527fd4aa3a500b937e83d3619"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "1ebcde1d84bb4e209f94db30e25d15c1"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX2",
+            "value": "0.5,0.0,-0.5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5fe8b22f82054e6c8a3303922443226a",
+      "name": "flux_s1_v2_h2_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "be13212527fd4aa3a500b937e83d3619"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "58be63efd7da4d0e8edb1007a6acbd43"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX2",
+            "value": "0.5,0.0,-0.5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "07edbaba0d814430a26e7431cf62bd5a",
+      "name": "flux_s1_v2_h3_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "be13212527fd4aa3a500b937e83d3619"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "0eccddddaec14ca5a72b75b14212b8d9"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX2",
+            "value": "0.5,0.0,-0.5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "16bcfc9740d6472f86406a2ce6dafd48",
+      "name": "flux_s1_v2_h1_m",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "351b8eb208604f84be99ff68b89d16ad"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "be13212527fd4aa3a500b937e83d3619"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "138841b6df8e472fbe3c6d7a1bc8424a"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX2",
+            "value": "0.5,0.0,-0.5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "df30154db146411188f6ac7d22b03d66",
+      "name": "flux_s2_v1_h1_f",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "c689d6037ba243dba22b87fe67e27409"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "0d4f0cade7df42bba4f8fa99810d21c2"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "d9aaf075e5f74c2fadcfb8d47134e399"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0.8,-0.4,-0.4"
+          },
+          {
+            "layer": "Main",
+            "transformer": "OSSTX2",
+            "value": "0.8,-0.4,-0.4"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1e1b6ea09b824ba5a6e8c08660b2b28b",
+      "name": "flux_s2_v1_h1_l",
+      "match_mode": "ALL",
+      "priority": 20,
+      "clauses": [
+        {
+          "case_part_id": "bcdc88cf686a49209fe954018d828f9c",
+          "value_id": "c689d6037ba243dba22b87fe67e27409"
+        },
+        {
+          "case_part_id": "2f811489374348a5a81905fec293adb1",
+          "value_id": "0d4f0cade7df42bba4f8fa99810d21c2"
+        },
+        {
+          "case_part_id": "05b687dc572a4127a639d8c18a87426f",
+          "value_id": "1ebcde1d84bb4e209f94db30e25d15c1"
+        }
+      ],
+      "changes": {
+        "use_cb": false,
+        "use_parameters": false,
+        "use_fault_level": false,
+        "use_layers": false,
+        "use_flux": true,
+        "cb": {
+          "off": [],
+          "switch": [],
+          "on": []
+        },
+        "parameters": [],
+        "fault_level": {
+          "rpos": "",
+          "xpos": "",
+          "rzero": "",
+          "xzero": ""
+        },
+        "layers": [],
+        "flux": [
+          {
+            "layer": "Main",
+            "transformer": "OSSTX1",
+            "value": "0.0,0.0,0.0"
+          },
+          {
+            "layer": "Main",
+            "transformer": "OSSTX2",
+            "value": "0.5,0.0,-0.5"
+          }
+        ]
+      }
+    }
+  ],
+  "exclusions": []
+}
