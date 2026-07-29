@@ -6,7 +6,8 @@ from PySide6 import QtCore, QtWidgets
 
 from case_builder_app.models import ExclusionCombination, Project, RuleClause
 from case_builder_app.services.exclusion_parser import parse_exclusion_text
-from case_builder_app.ui.table_helpers import EDITOR_TABLE_STYLESHEET, create_editor_table
+from case_builder_app.ui.table_helpers import create_editor_table
+from case_builder_app.ui.theme import editor_table_stylesheet
 
 
 class ExclusionsDialog(QtWidgets.QDialog):
@@ -16,7 +17,7 @@ class ExclusionsDialog(QtWidgets.QDialog):
         self.combinations = deepcopy(project.exclusions)
         self.setWindowTitle("Excluded Combinations")
         self.resize(1080, 620)
-        self.setStyleSheet(EDITOR_TABLE_STYLESHEET)
+        self._apply_styles()
         layout = QtWidgets.QVBoxLayout(self)
         layout.setContentsMargins(18, 16, 18, 16)
         layout.setSpacing(10)
@@ -78,6 +79,14 @@ class ExclusionsDialog(QtWidgets.QDialog):
         self.entry_edit.textChanged.connect(self._update_actions)
         self._refresh()
         self._update_actions()
+
+    def _apply_styles(self) -> None:
+        self.setStyleSheet(editor_table_stylesheet(self.palette()))
+
+    def changeEvent(self, event: QtCore.QEvent) -> None:
+        super().changeEvent(event)
+        if event.type() == QtCore.QEvent.Type.PaletteChange:
+            self._apply_styles()
 
     def _refresh(self) -> None:
         self.table.setRowCount(len(self.combinations))

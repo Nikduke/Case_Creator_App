@@ -97,6 +97,9 @@ Do not claim a check passed unless it was actually run. If validation cannot run
 - `src/case_builder_app/services/export_service.py` owns styled and simple workbook export.
 - `src/case_builder_app/services/style_template.py` depends on the layout of the bundled Excel template.
 - `src/case_builder_app/ui/project_document.py` owns open, save, Check, and export orchestration.
+- `src/case_builder_app/ui/theme.py` owns palette-aware shared UI colors and editor table styles.
+- `src/case_builder_app/ui/rules_dialogs.py` owns the Exclusions dialog.
+- `src/case_builder_app/ui/project_settings_dialog.py` owns the MM_blocks project settings dialog.
 - `tests/` contains generation, export, persistence, and UI behavior checks.
 
 Changes to `models.py`, `generator.py`, `validation.py`, `export_service.py`, or the Excel template have a wider regression risk and require focused tests plus the full suite when practical.
@@ -110,6 +113,7 @@ Update the relevant documentation when changing:
 - dependencies;
 - JSON schema or persistence behavior;
 - generation, validation, or export behavior;
+- UI palette/theme behavior;
 - known limitations or required fixtures.
 
 Keep documentation concise and describe the current behavior, not obsolete implementation history.

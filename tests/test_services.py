@@ -25,7 +25,7 @@ from case_builder_app.models import (
 )
 from case_builder_app.services.export_service import ExportService
 from case_builder_app.services.generator import GenerationService
-from case_builder_app.services.input_data import input_data_cell_values
+from case_builder_app.services.input_data import input_data_cached_formula_values, input_data_cell_values
 from case_builder_app.services.persistence import PROJECT_FILE_SUFFIX, PersistenceService
 
 
@@ -185,6 +185,22 @@ def test_persistence_round_trip_uses_flat_exclusion_combinations(tmp_path: Path)
     assert len(loaded.conditional_rules) == 1
     assert loaded.conditional_rules[0].name == "boost"
     assert loaded.conditional_rules[0].changes.parameters[0].parameter == "P_rule"
+
+
+def test_persistence_save_keeps_existing_file_if_replace_fails(tmp_path: Path, monkeypatch) -> None:  # noqa: ANN001
+    project_path = tmp_path / "project.casebuilder.json"
+    project_path.write_text("original", encoding="utf-8")
+
+    def fail_replace(_source, _target) -> None:  # noqa: ANN001
+        raise OSError("locked")
+
+    monkeypatch.setattr("case_builder_app.services.persistence.os.replace", fail_replace)
+
+    with pytest.raises(OSError, match="locked"):
+        PersistenceService().save_project(project_path, Project())
+
+    assert project_path.read_text(encoding="utf-8") == "original"
+    assert list(tmp_path.glob("*.json")) == [project_path]
 
 
 def test_export_service_writes_expected_sheet_structure_and_order(tmp_path: Path) -> None:
@@ -624,6 +640,30 @@ def test_input_data_residual_flux_is_only_enabled_for_switching_studies() -> Non
     assert input_data_cell_values(switching_project)["B7"] == "Yes"
     assert input_data_cell_values(fault_project)["B7"] == "No"
     assert input_data_cell_values(sweep_project)["B7"] == "No"
+
+
+def test_input_data_timing_uses_finite_fallbacks() -> None:
+    project = Project(
+        settings=ProjectSettings(
+            input_data=InputDataSettings(
+                studies=[INPUT_DATA_SWITCHING, INPUT_DATA_FAULT],
+                frequency="inf",
+                points_over_wave="inf",
+                fault_start="nan",
+                switch_start="-inf",
+                switch_points_to_check="inf",
+            )
+        )
+    )
+
+    values = input_data_cell_values(project)
+
+    assert values["B16"] == 60.0
+    assert values["B39"] == 2.1
+    assert values["B44"] == 2.1
+    assert values["B40"] == "=1/(B16*20)"
+    assert values["B41"] == "=B39+9*B40"
+    assert input_data_cached_formula_values(project)["B40"] == pytest.approx(1 / 1200)
 
 
 def test_export_service_sorts_cb_rows_by_voltage_then_natural_name(tmp_path: Path) -> None:

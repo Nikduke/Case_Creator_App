@@ -13,7 +13,8 @@ from case_builder_app.models import (
     ProjectSettings,
 )
 from case_builder_app.services.input_data import input_data_timing_values
-from case_builder_app.ui.table_helpers import ComboBoxDelegate, EDITOR_TABLE_STYLESHEET, create_editor_table
+from case_builder_app.ui.table_helpers import ComboBoxDelegate, create_editor_table
+from case_builder_app.ui.theme import ThemeColors, editor_table_stylesheet
 
 
 YES_NO_OPTIONS = ["Yes", "No"]
@@ -164,7 +165,7 @@ class InputDataDialog(QtWidgets.QDialog):
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
 
-        self.setStyleSheet(EDITOR_TABLE_STYLESHEET)
+        self._apply_styles()
         self._load_settings()
         self._refresh_visibility()
 
@@ -182,13 +183,21 @@ class InputDataDialog(QtWidgets.QDialog):
         layout.addWidget(self.switching_checkbox)
         layout.addWidget(self.fault_checkbox)
         layout.addStretch(1)
-        hint = QtWidgets.QLabel("Frequency sweep exclusive. Switching + Fault allowed.", group)
-        hint.setStyleSheet("color: #60717d;")
-        layout.addWidget(hint)
+        self._study_hint = QtWidgets.QLabel("Frequency sweep exclusive. Switching + Fault allowed.", group)
+        layout.addWidget(self._study_hint)
         self.frequency_sweep_checkbox.toggled.connect(self._on_study_toggled)
         self.switching_checkbox.toggled.connect(self._on_study_toggled)
         self.fault_checkbox.toggled.connect(self._on_study_toggled)
         return group
+
+    def _apply_styles(self) -> None:
+        self.setStyleSheet(editor_table_stylesheet(self.palette()))
+        self._study_hint.setStyleSheet(f"color: {ThemeColors.from_palette(self.palette()).muted_text.name()};")
+
+    def changeEvent(self, event: QtCore.QEvent) -> None:
+        super().changeEvent(event)
+        if event.type() == QtCore.QEvent.Type.PaletteChange:
+            self._apply_styles()
 
     def _build_table_group(
         self,
@@ -375,13 +384,13 @@ class InputDataDialog(QtWidgets.QDialog):
     def _value_for_row(self, row: SettingRow) -> str:
         timing = input_data_timing_values(self._settings)
         if row.key == "switch_increment":
-            return _format_float(timing["increment"])
+            return _format_float(timing.increment)
         if row.key == "switch_stop":
-            return _format_float(timing["switch_stop"])
+            return _format_float(timing.switch_stop)
         if row.key == "fault_increment":
-            return _format_float(timing["increment"])
+            return _format_float(timing.increment)
         if row.key == "fault_end":
-            return _format_float(timing["fault_end"])
+            return _format_float(timing.fault_end)
         return self._value_for_key(row.key)
 
     def _value_for_key(self, key: str) -> str:

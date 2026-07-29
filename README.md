@@ -22,10 +22,13 @@ The app exports `.xlsx` workbooks with:
 - Simple export option for plain generated data sheets while keeping required base sheets.
 - Selected-cases export through `File -> Export Selected Cases...`.
 
+The desktop UI follows the active Windows/Qt color palette. Main editor tables and the Exclusions, `Input_Data`, and `MM_blocks` dialogs keep table surfaces and headers readable in light and dark themes. This affects the UI only; Excel export colors come from the export template and export services.
+
 ## Project Layout
 
 - `src/case_builder_app/` - application code.
 - `src/case_builder_app/assets/` - bundled Excel template and app icons.
+- `src/case_builder_app/ui/theme.py` - palette-aware UI colors and shared table styles.
 - `tests/` - pytest suite.
 - `examples/` - small reference/sample files only.
 - `docs/` - current app behavior and JSON reference.
@@ -49,6 +52,12 @@ conda activate case-creator-app
 python -m pytest -q
 ```
 
+If the default Windows pytest temp folder is inaccessible, use a workspace-local temp directory:
+
+```powershell
+python -m pytest -q --basetemp .pytest-tmp
+```
+
 Build executable:
 
 ```powershell
@@ -65,10 +74,11 @@ dist/Case_Creator_App.exe
 
 Before changing files, read:
 
-1. `PROJECT_CONTEXT.md`
+1. `README.md`
 2. `SETUP.md`
-3. `docs/APP_FUNCTIONAL_SPEC.md`
-4. `docs/PROJECT_JSON_GUIDE.md`
+3. `PROJECT_CONTEXT.md`
+4. `docs/APP_FUNCTIONAL_SPEC.md`
+5. `docs/PROJECT_JSON_GUIDE.md`
 
 ## Notes
 

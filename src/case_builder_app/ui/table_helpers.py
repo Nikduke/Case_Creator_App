@@ -5,45 +5,6 @@ from typing import Callable, TypeVar
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
-
-EDITOR_TABLE_STYLESHEET = """
-QTableWidget#editorTable {
-    background: #ffffff;
-    border: 1px solid #d7e0e6;
-    border-radius: 6px;
-    gridline-color: #e5ebf0;
-    selection-background-color: #d8e8f5;
-    selection-color: #24343d;
-}
-QTableWidget#editorTable::item {
-    padding: 6px 8px;
-}
-QHeaderView::section {
-    background: #f4f7f9;
-    color: #31424d;
-    font-weight: 600;
-    padding: 8px 10px;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 1px solid #dbe4ea;
-    border-bottom: 2px solid #c8d4dc;
-}
-QTableWidget QHeaderView::section:vertical {
-    background: #f7f9fb;
-    color: #5c6c77;
-    border-right: 1px solid #dbe4ea;
-    border-bottom: 1px solid #dbe4ea;
-}
-QTableCornerButton::section {
-    background: #f4f7f9;
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 1px solid #dbe4ea;
-    border-bottom: 2px solid #c8d4dc;
-}
-"""
-
-
 @dataclass
 class DisplayRow:
     values: list[str]

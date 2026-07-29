@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass, field
 
 from case_builder_app.models import CBChanges, ConditionalRule, ExclusionCombination, Project, ValueChanges
@@ -189,7 +190,7 @@ class ValidationService:
         if not elements:
             return
 
-        duplicate_elements = sorted({item for item in elements if elements.count(item) > 1})
+        duplicate_elements = sorted(item for item, count in Counter(elements).items() if count > 1)
         if duplicate_elements:
             result.errors.append(f"Duplicate MM element names: {', '.join(duplicate_elements)}.")
 

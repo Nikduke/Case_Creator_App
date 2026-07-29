@@ -9,6 +9,7 @@ from case_builder_app.models import CBChanges
 from case_builder_app.services.equipment import numeric_voltage_token, voltage_sort_key
 from case_builder_app.services.text_tokens import parse_token_text
 from case_builder_app.ui.token_list import TokenHistory, token_matches_filter
+from case_builder_app.ui.theme import ThemeColors
 
 
 @dataclass(frozen=True)
@@ -47,27 +48,29 @@ class CBChipDelegate(QtWidgets.QStyledItemDelegate):
             -self._CHIP_MARGIN_X,
             -self._CHIP_MARGIN_Y,
         )
+        palette = option.widget.palette() if option.widget is not None else None
+        colors = ThemeColors.from_palette(palette)
         selected = bool(option.state & QtWidgets.QStyle.State_Selected)
         status = str(index.data(self.STATUS_ROLE) or "plain")
-        background = QtGui.QColor("#ffffff")
-        border = QtGui.QColor("#d1dbe1")
-        text_color = QtGui.QColor("#24343d")
+        background = colors.base
+        border = colors.border
+        text_color = colors.text
         accent = None
         if status == "inherited":
-            background = QtGui.QColor("#f8fbfd")
-            border = QtGui.QColor("#d6e0e6")
-            text_color = QtGui.QColor("#71808b")
+            background = colors.inherited_background
+            border = colors.inherited_border
+            text_color = colors.inherited_text
         elif status == "overridden":
-            background = QtGui.QColor("#fcfbfe")
-            border = QtGui.QColor("#cbb8de")
-            accent = QtGui.QColor("#a98cc9")
+            background = colors.overridden_background
+            border = colors.overridden_border
+            accent = colors.overridden_border
         elif status == "added":
-            background = QtGui.QColor("#eef7f2")
-            border = QtGui.QColor("#b8d5c4")
+            background = colors.added_background
+            border = colors.added_border
         if selected:
-            background = QtGui.QColor("#d9e8f5")
-            border = QtGui.QColor("#8ea5b3")
-            text_color = QtGui.QColor("#24343d")
+            background = colors.highlight
+            border = colors.strong_border
+            text_color = colors.highlighted_text
         painter.setPen(QtGui.QPen(border, 1))
         painter.setBrush(background)
         painter.drawRoundedRect(rect, 8, 8)
@@ -82,7 +85,7 @@ class CBChipDelegate(QtWidgets.QStyledItemDelegate):
         painter.drawText(text_rect, QtCore.Qt.AlignVCenter | QtCore.Qt.TextSingleLine, str(index.data() or ""))
 
         close_rect = self.close_rect(rect)
-        painter.setPen(QtGui.QColor("#6e7f8b"))
+        painter.setPen(colors.muted_text)
         painter.drawText(close_rect, QtCore.Qt.AlignCenter, "x")
         painter.restore()
 
@@ -94,7 +97,9 @@ class CBChipDelegate(QtWidgets.QStyledItemDelegate):
     def _paint_group_header(self, painter, option, index):  # noqa: ANN001
         painter.save()
         rect = option.rect.adjusted(8, 4, -8, -2)
-        painter.setPen(QtGui.QColor("#60717d"))
+        palette = option.widget.palette() if option.widget is not None else None
+        colors = ThemeColors.from_palette(palette)
+        painter.setPen(colors.muted_text)
         font = painter.font()
         font.setBold(True)
         font.setPointSize(max(8, font.pointSize() - 1))
@@ -102,7 +107,7 @@ class CBChipDelegate(QtWidgets.QStyledItemDelegate):
         painter.drawText(rect, QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter, str(index.data() or "Unknown voltage"))
         line_y = rect.center().y()
         text_width = QtGui.QFontMetrics(font).horizontalAdvance(str(index.data() or "Unknown voltage"))
-        painter.setPen(QtGui.QPen(QtGui.QColor("#cfd9df"), 1))
+        painter.setPen(QtGui.QPen(colors.border, 1))
         painter.drawLine(rect.left() + text_width + 10, line_y, rect.right(), line_y)
         painter.restore()
 
@@ -338,7 +343,7 @@ class CBLaneList(QtWidgets.QListWidget):
         if not message:
             return
         painter = QtGui.QPainter(self.viewport())
-        painter.setPen(QtGui.QColor("#70818d"))
+        painter.setPen(ThemeColors.from_palette(self.palette()).muted_text)
         painter.drawText(
             self.viewport().rect().adjusted(16, 6, -16, -16),
             QtCore.Qt.AlignTop | QtCore.Qt.AlignHCenter | QtCore.Qt.TextWordWrap,

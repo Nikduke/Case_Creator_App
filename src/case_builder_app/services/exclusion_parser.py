@@ -64,32 +64,3 @@ def parse_exclusion_text(project: Project, text: str) -> list[ExclusionCombinati
     if not combinations:
         raise ValueError("Enter at least one token for the excluded combination.")
     return combinations
-
-
-def exclusion_combination_to_text(project: Project, combination: ExclusionCombination) -> str:
-    by_case_part = {clause.case_part_id: clause for clause in combination.clauses}
-    tokens: list[str] = []
-    for case_part in project.case_parts:
-        clause = by_case_part.get(case_part.id)
-        if clause is None:
-            continue
-        token = _token_display(project, clause)
-        if token:
-            tokens.append(token)
-    return ", ".join(tokens)
-
-
-def _token_display(project: Project, clause: RuleClause) -> str:
-    case_part = project.find_case_part(clause.case_part_id)
-    value = project.find_value(clause.case_part_id, clause.value_id)
-    if case_part is None or value is None:
-        return ""
-
-    matches = 0
-    for project_case_part in project.case_parts:
-        for project_value in project_case_part.values:
-            if project_value.token == value.token:
-                matches += 1
-    if matches > 1:
-        return f"{case_part.label}={value.token}"
-    return value.token

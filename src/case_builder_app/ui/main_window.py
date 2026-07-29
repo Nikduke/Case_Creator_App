@@ -13,6 +13,7 @@ from case_builder_app.ui.common import CaseNameOrderDialog, CasePartDialog, Toke
 from case_builder_app.ui.project_document import ProjectDocumentController
 from case_builder_app.ui.project_selection import ProjectSelectionController
 from case_builder_app.ui.project_structure import ProjectStructureController
+from case_builder_app.ui.theme import main_window_stylesheet
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -97,26 +98,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.project_path_label.setObjectName("projectPathLabel")
         self.project_notice_label = QtWidgets.QLabel(self.project_options_frame)
         self.project_notice_label.setObjectName("projectNoticeLabel")
-        self.project_options_group.setStyleSheet(
-            """
-            QLabel#projectPathLabel {
-                color: #45545f;
-                background: #f2f5f7;
-                border: 1px solid #cfd8de;
-                border-radius: 8px;
-                padding: 3px 10px;
-                font-weight: 600;
-            }
-            QLabel#projectNoticeLabel {
-                color: #2f6b4f;
-                background: #eef7f2;
-                border: 1px solid #bdd4c5;
-                border-radius: 8px;
-                padding: 3px 10px;
-                font-weight: 600;
-            }
-            """
-        )
         self.project_path_label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
         self.project_notice_label.setVisible(False)
         project_options_layout.addWidget(QtWidgets.QLabel("Name", self.project_options_frame))
@@ -201,10 +182,6 @@ class MainWindow(QtWidgets.QMainWindow):
         export_font = self.export_button.font()
         export_font.setBold(True)
         self.export_button.setFont(export_font)
-        export_palette = self.export_button.palette()
-        export_palette.setColor(QtGui.QPalette.Button, QtGui.QColor("#e4f1e8"))
-        self.export_button.setPalette(export_palette)
-        self.export_button.setAutoFillBackground(True)
         footer.addWidget(self.total_count_label)
         footer.addWidget(self.excluded_count_label)
         footer.addWidget(self.final_count_label)
@@ -219,6 +196,18 @@ class MainWindow(QtWidgets.QMainWindow):
         self.changes_editor.setEnabled(False)
         self.export_button.setEnabled(False)
         self.project_options_frame.setVisible(True)
+        self._apply_styles()
+
+    def _apply_styles(self) -> None:
+        self.setStyleSheet(main_window_stylesheet(self.palette()))
+
+    def changeEvent(self, event: QtCore.QEvent) -> None:
+        super().changeEvent(event)
+        if event.type() == QtCore.QEvent.Type.PaletteChange:
+            self._apply_styles()
+            if hasattr(self, "changes_editor"):
+                self.changes_editor.setPalette(self.palette())
+                self.changes_editor.apply_theme()
 
     def _build_actions(self) -> None:
         menu = self.menuBar()

@@ -1,8 +1,5 @@
-import os
 from copy import deepcopy
 from pathlib import Path
-
-os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 import pytest
 from PySide6 import QtGui, QtWidgets
@@ -14,16 +11,8 @@ from case_builder_app.ui.cb_state_board import CBChipDelegate
 from case_builder_app.ui.main_window import MainWindow
 
 
-def _app() -> QtWidgets.QApplication:
-    app = QtWidgets.QApplication.instance()
-    if app is None:
-        app = QtWidgets.QApplication([])
-    return app
-
-
 @pytest.fixture
-def window():
-    _app()
+def window(qapp):
     widget = MainWindow()
     yield widget
     widget._set_dirty(False)

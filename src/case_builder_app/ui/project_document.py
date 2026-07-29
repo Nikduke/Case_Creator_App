@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 import re
 from typing import TYPE_CHECKING
@@ -13,6 +14,9 @@ from case_builder_app.services.validation import ValidationService
 
 if TYPE_CHECKING:
     from case_builder_app.ui.main_window import MainWindow
+
+
+logger = logging.getLogger(__name__)
 
 
 class ProjectDocumentController:
@@ -70,7 +74,6 @@ class ProjectDocumentController:
         if not self.window.confirm_save_if_dirty("creating a new project"):
             return
         self.window.project = Project()
-        self.window.normalize_case_part_selectors()
         self.window.project_path = None
         self.window.generated_cases = []
         self.window.generation_stats = GenerationStats()
@@ -151,6 +154,7 @@ class ProjectDocumentController:
                 self.window.export_service = ExportService()
             self.window.export_service.export(self.window.project, generated_cases, export_path)
         except Exception as exc:
+            logger.exception("Excel export failed for %s", export_path)
             QtWidgets.QMessageBox.critical(
                 self.window,
                 "Export Error",

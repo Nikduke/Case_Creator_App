@@ -65,6 +65,7 @@ class GenerationService:
         value_lists = [case_part.values for case_part in project.case_parts]
         stats.total_combinations = prod(len(values) for values in value_lists)
         ordered_rules = sorted(project.conditional_rules, key=lambda item: item.priority)
+        ordered_case_parts = project.case_parts_in_name_order()
         res_flux_enabled = project.settings.input_data.uses_residual_flux()
 
         generated_cases: list[GeneratedCase] = []
@@ -72,15 +73,15 @@ class GenerationService:
         seen_names: set[str] = set()
 
         for combo in product(*value_lists):
-            selected_value_ids = {case_part.id: value.id for case_part, value in zip(project.case_parts, combo, strict=True)}
+            selected_values = {case_part.id: value for case_part, value in zip(project.case_parts, combo, strict=True)}
+            selected_value_ids = {case_part_id: value.id for case_part_id, value in selected_values.items()}
             if self._is_excluded(project.exclusions, selected_value_ids):
                 stats.excluded_combinations += 1
                 continue
 
-            selected_values = {case_part.id: value for case_part, value in zip(project.case_parts, combo, strict=True)}
             combo_tokens = [
                 selected_values[case_part.id].token
-                for case_part in project.case_parts_in_name_order()
+                for case_part in ordered_case_parts
                 if case_part.id in selected_values
             ]
             if project.base_case.include_in_case_name and project.base_case.token.strip():
@@ -177,9 +178,9 @@ class GenerationService:
         return False
 
     def _rule_matches(self, rule: ConditionalRule, selected_value_ids: dict[str, str]) -> bool:
-        matches = [selected_value_ids.get(clause.case_part_id) == clause.value_id for clause in rule.clauses]
-        if not matches:
+        if not rule.clauses:
             return False
+        matches = (selected_value_ids.get(clause.case_part_id) == clause.value_id for clause in rule.clauses)
         if rule.match_mode == "ANY":
             return any(matches)
         return all(matches)

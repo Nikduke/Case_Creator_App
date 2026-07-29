@@ -1,7 +1,3 @@
-import os
-
-os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-
 import pytest
 from PySide6 import QtCore, QtWidgets
 
@@ -9,16 +5,8 @@ from case_builder_app.models import CBChanges, LayerChange, ParameterChange, Pro
 from case_builder_app.ui.changes_editor import ChangesEditor
 
 
-def _app() -> QtWidgets.QApplication:
-    app = QtWidgets.QApplication.instance()
-    if app is None:
-        app = QtWidgets.QApplication([])
-    return app
-
-
 @pytest.fixture
-def editor():
-    _app()
+def editor(qapp):
     widget = ChangesEditor()
     yield widget
     widget.close()

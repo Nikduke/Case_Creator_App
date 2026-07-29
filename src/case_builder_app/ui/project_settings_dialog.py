@@ -7,8 +7,9 @@ from PySide6 import QtCore, QtWidgets
 from case_builder_app.models import MMBlocks, MMLimit, Project
 from case_builder_app.services.equipment import sort_equipment_names, sort_voltage_tokens, voltage_token
 from case_builder_app.services.text_tokens import parse_token_text
-from case_builder_app.ui.table_helpers import EDITOR_TABLE_STYLESHEET, create_editor_table
+from case_builder_app.ui.table_helpers import create_editor_table
 from case_builder_app.ui.token_list import TokenHistory, token_matches_filter
+from case_builder_app.ui.theme import editor_table_stylesheet
 
 
 class ProjectSettingsDialog(QtWidgets.QDialog):
@@ -99,7 +100,12 @@ class ProjectSettingsDialog(QtWidgets.QDialog):
         return tab
 
     def _apply_styles(self) -> None:
-        self.setStyleSheet(EDITOR_TABLE_STYLESHEET)
+        self.setStyleSheet(editor_table_stylesheet(self.palette()))
+
+    def changeEvent(self, event: QtCore.QEvent) -> None:
+        super().changeEvent(event)
+        if event.type() == QtCore.QEvent.Type.PaletteChange:
+            self._apply_styles()
 
     def get_mm_blocks(self) -> MMBlocks:
         self._store_limit_table_values()

@@ -80,6 +80,10 @@ conda activate case-creator-app
 case-creator-app
 ```
 
+## UI Theme
+
+The app follows the active Windows/Qt color palette. Shared palette-aware styles cover the main editor tables, Changes, Exclusions, `Input_Data`, and `MM_blocks`, including horizontal and vertical table headers. The UI theme does not change Excel export styling.
+
 Launcher without manual activation:
 
 ```powershell
@@ -100,7 +104,7 @@ If pytest cannot access the default user temp folder, use a workspace-local temp
 python -m pytest -q --basetemp .pytest-tmp
 ```
 
-Expected current test result:
+Expected current test result without the optional local reference fixture:
 
 ```text
 69 passed, 1 skipped
@@ -109,6 +113,8 @@ Expected current test result:
 The skipped test is optional and depends on a fixture not included in this clean snapshot.
 
 The skipped test is `tests/test_services.py::test_export_service_real_energisation_project_keeps_excel_styles`. It expects `F4_Energisation_FS.casebuilder.json` in the project root. The fixture is a large/local reference project and is not required to run the app.
+
+After validation, remove workspace-local `.pytest-tmp*`, `.pytest_cache`, and `__pycache__` directories if they were generated.
 
 ## Build Executable
 
@@ -125,6 +131,12 @@ dist/Case_Creator_App.exe
 ```
 
 If the executable is running, close it before rebuilding.
+
+The dedicated environment must already contain the packaging dependencies. If the build reports a missing package, update the environment before rebuilding:
+
+```powershell
+conda env update -f environment.yml --prune
+```
 
 ## Machine-Specific Items
 

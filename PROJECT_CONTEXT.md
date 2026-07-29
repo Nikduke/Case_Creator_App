@@ -2,7 +2,7 @@
 
 ## Status
 
-This is the clean active working snapshot for `Case_Creator_App`.
+This is the active working snapshot for `Case_Creator_App`.
 
 The project uses Git on the `main` branch. Treat this folder as the project root.
 
@@ -62,13 +62,18 @@ python -m pytest -q
 - `MM_blocks` limits are project-level values, sorted by voltage level.
 - CB and MM voltage ordering uses voltage token from element names and sorts high to low; non-numeric voltage sorts last.
 - `Input_Data` export writes formulas for `B40`, `B41`, `B45`, and `B46`, then patches cached numeric values into the saved `.xlsx` so pandas-based PSCAD scripts can read values without opening Excel.
+- `Input_Data` timing values are normalized once for visible cells, formulas, cached values, and dialog previews. Non-finite numeric input falls back to the existing defaults instead of being written into the workbook.
+- Project JSON saves use a temporary sibling file followed by replacement, so an interrupted save does not truncate the previous project file.
 - Project validation rejects duplicate or missing case-part/value IDs, invalid saved name-order references, and invalid conditional-rule references or match modes.
 - Export restores raw Excel `x14:dataValidations` XML for `Input_Data` because `openpyxl` cannot preserve that extension directly.
+- The UI follows the active Windows/Qt palette. Shared palette-aware styles normalize table surfaces and header contrast for light and dark themes in Changes, Exclusions, `Input_Data`, and `MM_blocks`; this does not affect Excel export styling.
+- Exclusions remain fully editable through the dedicated dialog. Text parsing supports whitespace, commas, semicolons, tabs, new lines, and explicit `CasePart=Value` tokens.
 
 ## Main Modules
 
 - `models.py` - dataclasses and JSON structures.
 - `services/generator.py` - case generation and layered application of changes.
+- `services/exclusion_parser.py` - exclusion text parsing and token resolution.
 - `services/export_service.py` - styled/simple Excel export orchestration.
 - `services/input_data.py` - values/formulas written into `Input_Data`.
 - `services/sheet_builders.py` - shared rows for styled/simple export.
@@ -79,7 +84,10 @@ python -m pytest -q
 - `ui/project_selection.py` - selected case part/value state and branch preview wiring.
 - `ui/changes_editor.py` - editor card composition.
 - `ui/cb_state_board.py` - CB lane editor and branch preview.
+- `ui/theme.py` - palette-aware shared UI colors and editor table styles.
+- `ui/rules_dialogs.py` - Exclusions dialog.
 - `ui/input_data_dialog.py` - project-level `Input_Data` settings.
+- `ui/project_settings_dialog.py` - project-level MM block elements and limits.
 
 ## Configuration Requirements
 
@@ -94,6 +102,9 @@ python -m pytest -q
 - Batch scripts locate `conda.exe` in common Anaconda/Miniconda install folders. Update their `:find_conda` section if Anaconda is installed elsewhere.
 - The app is Windows-oriented for executable packaging.
 - Conditional rules remain supported in JSON and generation but have no current UI editor.
+- UI theme colors are runtime palette state and are not stored in project JSON.
+- Generation remains synchronous and keeps generated cases in memory until export. Large projects should be measured before introducing background workers or caching layers.
+- `MainWindow` and `CBStateBoard` remain intentionally unchanged large UI modules; do not split them without focused workflow tests.
 - Some example files retain legacy engineering filenames because they are reference workbooks, not app versions.
 - Internal package name is not renamed to avoid broad churn.
 
@@ -109,5 +120,5 @@ python -m pytest -q
 2. Inspect actual code before edits.
 3. Verify docs against code before trusting them.
 4. Run `python -m pytest -q`.
-5. Report understanding before changing files.
+5. Work silently during the task; report only completion, blockers, approval requests, or the final validation result.
 6. Make small targeted changes only.

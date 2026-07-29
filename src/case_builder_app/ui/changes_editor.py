@@ -8,11 +8,8 @@ from case_builder_app.models import CBChanges, FluxChange, LayerChange, Paramete
 from case_builder_app.ui.cb_state_board import CBPreviewRow, CBStateBoard
 from case_builder_app.ui.fault_level_section import FaultLevelSection
 from case_builder_app.ui.inherited_table_section import InheritedTableSection
-from case_builder_app.ui.table_helpers import (
-    ComboBoxDelegate,
-    EDITOR_TABLE_STYLESHEET,
-    SuggestionDelegate,
-)
+from case_builder_app.ui.table_helpers import ComboBoxDelegate, SuggestionDelegate
+from case_builder_app.ui.theme import ThemeColors, changes_editor_stylesheet
 
 
 class ChangesEditor(QtWidgets.QWidget):
@@ -193,101 +190,16 @@ class ChangesEditor(QtWidgets.QWidget):
         layout.setSpacing(10)
 
     def _apply_styles(self) -> None:
-        self.setStyleSheet(
-            """
-            QFrame#selectorBar {
-                background: #f5f7f8;
-                border: 1px solid #d8e0e4;
-                border-radius: 10px;
-            }
-            QToolButton#selectorButton {
-                background: #ffffff;
-                border: 1px solid #cfd8de;
-                border-radius: 16px;
-                padding: 6px 12px;
-                color: #23323b;
-                font-weight: 600;
-            }
-            QToolButton#selectorButton:checked {
-                background: #e7eef3;
-                border-color: #8ea5b3;
-            }
-            QGroupBox#sectionCard {
-                background: #fbfcfd;
-                border: 1px solid #d8e0e4;
-                border-radius: 10px;
-                margin-top: 22px;
-                padding: 12px;
-                font-weight: 600;
-            }
-            QGroupBox#sectionCard::title {
-                subcontrol-origin: margin;
-                left: 12px;
-                padding: 0 6px 4px 6px;
-                color: #31424d;
-            }
-            QFrame#cbLaneFrame {
-                border-radius: 8px;
-            }
-            QFrame#cbLaneFrame[accent="off"] {
-                background: #f3faf4;
-                border: 1px solid #bed8c2;
-            }
-            QFrame#cbLaneFrame[accent="off"][active="true"] {
-                background: #e4f3e7;
-                border: 1px solid #8fbe98;
-            }
-            QFrame#cbLaneFrame[accent="switch"] {
-                background: #fffaf0;
-                border: 1px solid #e2d19f;
-            }
-            QFrame#cbLaneFrame[accent="switch"][active="true"] {
-                background: #fff3d9;
-                border: 1px solid #d1b56a;
-            }
-            QFrame#cbLaneFrame[accent="on"] {
-                background: #fff4f1;
-                border: 1px solid #e3beb4;
-            }
-            QFrame#cbLaneFrame[accent="on"][active="true"] {
-                background: #fde7e0;
-                border: 1px solid #d59a8a;
-            }
-            QFrame#cbPreviewFrame {
-                background: #f6f9fb;
-                border: 1px solid #d9e2e7;
-                border-radius: 8px;
-            }
-            QLabel#cbPreviewTitle {
-                color: #465964;
-                font-weight: 700;
-            }
-            QLabel#cbPreviewLabel {
-                color: #52636d;
-                font-weight: 600;
-            }
-            QPushButton#cbPreviewButton {
-                background: #ffffff;
-                border: 1px solid #cbd7de;
-                border-radius: 12px;
-                padding: 4px 10px;
-                min-width: 44px;
-            }
-            QPushButton#cbPreviewButton:checked {
-                background: #e4eef5;
-                border-color: #8ba8ba;
-                font-weight: 700;
-            }
-            QLabel#cbLaneTitle {
-                color: #33424d;
-                font-weight: 700;
-            }
-            QLineEdit {
-                min-height: 28px;
-            }
-            """
-            + EDITOR_TABLE_STYLESHEET
-        )
+        self.setStyleSheet(changes_editor_stylesheet(self.palette()))
+
+    def apply_theme(self) -> None:
+        self._apply_styles()
+        self._refresh_inline_statuses()
+
+    def changeEvent(self, event: QtCore.QEvent) -> None:
+        super().changeEvent(event)
+        if event.type() == QtCore.QEvent.Type.PaletteChange:
+            self.apply_theme()
 
     def set_res_flux_enabled(self, enabled: bool) -> None:
         self._res_flux_enabled = enabled
@@ -459,18 +371,21 @@ class ChangesEditor(QtWidgets.QWidget):
         self.flux_revert_button.setEnabled(self._res_flux_enabled and self.flux_checkbox.isChecked() and not self._is_base_case and flux_selected and flux_actionable)
 
     def _apply_item_style(self, item: QtWidgets.QTableWidgetItem, status: str) -> None:
+        colors = ThemeColors.from_palette(self.palette())
         status = status or "plain"
-        foreground = QtGui.QBrush(QtGui.QColor("#24343d"))
-        background = QtGui.QBrush(QtGui.QColor("#ffffff"))
+        foreground = colors.text
+        background = colors.base
         if status == "inherited":
-            foreground = QtGui.QBrush(QtGui.QColor("#73818c"))
-            background = QtGui.QBrush(QtGui.QColor("#f9fbfc"))
+            foreground = colors.inherited_text
+            background = colors.inherited_background
         elif status == "overridden":
-            background = QtGui.QBrush(QtGui.QColor("#f4eef9"))
+            foreground = colors.overridden_text
+            background = colors.overridden_background
         elif status == "added":
-            background = QtGui.QBrush(QtGui.QColor("#eef7f2"))
-        item.setForeground(foreground)
-        item.setBackground(background)
+            foreground = colors.added_text
+            background = colors.added_background
+        item.setForeground(QtGui.QBrush(foreground))
+        item.setBackground(QtGui.QBrush(background))
 
     @staticmethod
     def _parameter_values(item: ParameterChange) -> list[str]:

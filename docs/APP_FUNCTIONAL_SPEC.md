@@ -54,6 +54,10 @@ Project options are project-level, not case-value-specific:
 
 ## Editors
 
+### Exclusions
+
+Exclusions are edited in a dedicated project-level dialog. Each row represents one excluded combination. Users can add rows manually or paste one or more combinations using spaces, commas, semicolons, tabs, or new lines. Explicit `CasePart=Value` tokens resolve values when a token is ambiguous across case parts.
+
 ### CB State
 
 CB state uses three lanes:
@@ -134,6 +138,14 @@ Export writes formulas into:
 - `B46` Switch stop.
 
 Export also writes cached numeric values into the `.xlsx` XML so pandas/openpyxl readers can read values without Excel recalculation.
+
+Timing inputs are normalized consistently across the dialog preview and export. Non-finite numeric text falls back to the existing default timing values.
+
+## UI Theme
+
+The app follows the active Windows/Qt color palette. Main editor tables, Changes, Exclusions, `Input_Data`, and `MM_blocks` dialogs derive their backgrounds, text, borders, selections, and status colors from that palette, including when it changes while the app is open. Excel export styling remains independent of the UI theme.
+
+Table headers have explicit palette-aware styling and contrast normalization. The UI does not persist theme colors in project JSON.
 
 ## Export
 

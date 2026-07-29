@@ -23,14 +23,6 @@ echo Using Python:
 echo   conda run -n %ENV_NAME% python
 echo.
 
-"%CONDA_EXE%" run -n "%ENV_NAME%" python -c "import importlib.util, sys; sys.exit(0 if importlib.util.find_spec('PyInstaller') and importlib.util.find_spec('openpyxl') else 1)" >nul 2>nul
-if errorlevel 1 (
-  echo Installing packaging dependencies...
-  "%CONDA_EXE%" run -n "%ENV_NAME%" python -m pip install -e ".[packaging]"
-  if errorlevel 1 exit /b %errorlevel%
-  echo.
-)
-
 tasklist /FI "IMAGENAME eq %EXE_NAME%" 2>nul | find /I "%EXE_NAME%" >nul
 if not errorlevel 1 (
   echo %EXE_NAME% is currently running.

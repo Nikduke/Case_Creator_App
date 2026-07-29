@@ -1,7 +1,3 @@
-import os
-
-os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-
 from PySide6 import QtCore, QtTest, QtWidgets
 
 from case_builder_app.models import INPUT_DATA_FAULT, INPUT_DATA_SWITCHING, InputDataSettings, ProjectSettings, SelectedCaseList
@@ -10,15 +6,7 @@ from case_builder_app.ui.input_data_dialog import InputDataDialog
 from case_builder_app.ui.table_helpers import ComboBoxDelegate, create_editor_table
 
 
-def _app() -> QtWidgets.QApplication:
-    app = QtWidgets.QApplication.instance()
-    if app is None:
-        app = QtWidgets.QApplication([])
-    return app
-
-
-def test_selected_cases_export_dialog_validates_missing_and_duplicates() -> None:
-    _app()
+def test_selected_cases_export_dialog_validates_missing_and_duplicates(qapp) -> None:
     dialog = SelectedCasesExportDialog(["A1", "B2"], [], simple_export_enabled=True)
 
     assert dialog.simple_export_enabled() is True
@@ -44,8 +32,7 @@ def test_selected_cases_export_dialog_validates_missing_and_duplicates() -> None
     QtWidgets.QApplication.processEvents()
 
 
-def test_selected_cases_export_dialog_saves_updates_and_loads_lists(monkeypatch) -> None:  # noqa: ANN001
-    _app()
+def test_selected_cases_export_dialog_saves_updates_and_loads_lists(monkeypatch, qapp) -> None:  # noqa: ANN001
     saved = SelectedCaseList(name="Report", case_names=["A1"])
     dialog = SelectedCasesExportDialog(["A1", "B2", "C3"], [saved], simple_export_enabled=False)
 
@@ -72,8 +59,7 @@ def test_selected_cases_export_dialog_saves_updates_and_loads_lists(monkeypatch)
     QtWidgets.QApplication.processEvents()
 
 
-def test_input_data_dialog_enforces_study_selection_and_saves_fields() -> None:
-    _app()
+def test_input_data_dialog_enforces_study_selection_and_saves_fields(qapp) -> None:
     settings = ProjectSettings(
         input_data=InputDataSettings(studies=[INPUT_DATA_SWITCHING, INPUT_DATA_FAULT], frequency="50"),
     )
@@ -108,8 +94,7 @@ def test_input_data_dialog_enforces_study_selection_and_saves_fields() -> None:
     QtWidgets.QApplication.processEvents()
 
 
-def test_input_data_dialog_switching_rows_follow_operation_and_type() -> None:
-    _app()
+def test_input_data_dialog_switching_rows_follow_operation_and_type(qapp) -> None:
     dialog = InputDataDialog(
         ProjectSettings(input_data=InputDataSettings(studies=[INPUT_DATA_SWITCHING], switch_operation="On", switch_type="Sequential"))
     )
@@ -143,8 +128,7 @@ def test_input_data_dialog_switching_rows_follow_operation_and_type() -> None:
     QtWidgets.QApplication.processEvents()
 
 
-def test_dropdown_table_cells_open_on_single_click() -> None:
-    _app()
+def test_dropdown_table_cells_open_on_single_click(qapp) -> None:
     dialog = InputDataDialog(ProjectSettings(input_data=InputDataSettings(studies=[INPUT_DATA_SWITCHING])))
     table = dialog._tables["switching"]
     index = table.model().index(0, 1)
@@ -160,8 +144,7 @@ def test_dropdown_table_cells_open_on_single_click() -> None:
     QtWidgets.QApplication.processEvents()
 
 
-def test_combo_delegate_commits_each_selection_without_focus_change() -> None:
-    _app()
+def test_combo_delegate_commits_each_selection_without_focus_change(qapp) -> None:
     table = create_editor_table(None, ["Value"], editable=True)
     table.setRowCount(1)
     table.setItem(0, 0, QtWidgets.QTableWidgetItem("A"))

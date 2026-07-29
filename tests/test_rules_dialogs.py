@@ -1,7 +1,3 @@
-import os
-
-os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-
 import pytest
 from PySide6 import QtWidgets
 
@@ -11,16 +7,8 @@ from case_builder_app.ui.rules_dialogs import ExclusionsDialog
 from case_builder_app.ui.table_helpers import EditableCellTable
 
 
-def _app() -> QtWidgets.QApplication:
-    app = QtWidgets.QApplication.instance()
-    if app is None:
-        app = QtWidgets.QApplication([])
-    return app
-
-
 @pytest.fixture
-def project() -> Project:
-    _app()
+def project(qapp) -> Project:
     return Project(
         case_parts=[
             CasePart(

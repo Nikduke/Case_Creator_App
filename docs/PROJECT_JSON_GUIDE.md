@@ -87,6 +87,8 @@ Current change areas include:
 
 `changes` also stores selector flags (`use_cb`, `use_parameters`, `use_fault_level`, `use_layers`, and `use_flux`) and the corresponding data fields. Parameter, layer, and residual-flux rows have an `id`; an inherited override may also contain `base_row_id` pointing to the Base Case row it overrides.
 
+For case-part values, selector flags are stored on each value for JSON compatibility, but the current editor treats them as case-part-wide settings. Changing a selector on one value synchronizes the other values in that case part, and loading a project normalizes them to the first value's selector flags. Moving these flags to the case-part object would require a schema decision.
+
 ## CB State Semantics
 
 CB state has lanes:
@@ -146,6 +148,8 @@ When switching and fault are both selected, export forces `Switch type = Sequent
 
 Sequential timing formulas are written into the exported workbook, with cached numeric values added after save for external pandas/openpyxl readers.
 
+Timing inputs are normalized once for dialog previews, visible workbook cells, formulas, and cached values. Non-finite numeric text uses the existing timing defaults instead of being written as an invalid numeric value.
+
 When serialized, `studies` is normalized to the supported study combinations. Frequency sweep takes precedence when selected; switching plus fault is retained as a combined selection. Residual flux is effective only for switching studies when `residual_flux` is `Yes`.
 
 ## MM Blocks
@@ -171,5 +175,6 @@ These lists affect selected export only. They do not change generated cases.
 - Current app writes schema version `2`.
 - Missing persisted object IDs are generated when a file is loaded; references that were also missing cannot be reconstructed automatically.
 - Loader keeps backward compatibility for the legacy `res_flux_enabled` field and does not write it back.
+- UI theme state is not serialized. The app derives light/dark colors from the active Windows/Qt palette each time the UI is created or the palette changes.
 - Do not hand-edit project JSON unless needed.
 - If hand-editing, run tests and load/save the file in the app after edits.
